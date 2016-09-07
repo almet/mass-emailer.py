@@ -75,7 +75,10 @@ def main():
                         help='Field to use as an email field.',
                         default='email')
 
+    parser.add_argument('--cc', dest='cc',
+                        help='Address to put in cc.', default=None)
+
     args = parser.parse_args()
     send_emails(args.templates_folder, args.dataset, args.server, args.sender,
                 args.tls, args.username, args.password,
-                email_field=args.email_field)
+                email_field=args.email_field, cc=args.cc)
