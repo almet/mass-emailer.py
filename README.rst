@@ -17,8 +17,8 @@ Create the templates using the Jinja2 syntax. For instance::
     Cheers,
     The team.
 
-Create this file and let's say you name it `body`. Create a second template
-named `subject` with the subject of the email.
+Create this file and let's say you name it ``body``. Create a second template
+named ``subject`` with the subject of the email.
 
 Create the list of emails + info
 ================================
@@ -27,7 +27,7 @@ Every format supported by `tablib <https://github.com/kennethreitz/tablib>`_
 will work correctly.
 
 For instance, let's say we have a json file with the following values, named
-`dataset.json`::
+``dataset.json``::
 
   '[
      {"reason": "the one", "email": "toto@yopmail.com", "name": "Mr Toto"},

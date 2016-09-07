@@ -51,7 +51,7 @@ def main():
 
     parser.add_argument('-t', '--templates', dest='templates_folder',
                         help='Path where to find the templates files.',
-                        default='.')
+                        default='templates')
 
     parser.add_argument('-d', '--dataset', dest='dataset',
                         help='Location of the dataset file.',
