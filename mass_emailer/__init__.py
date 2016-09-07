@@ -9,7 +9,7 @@ from tablib import Dataset
 
 
 def send_emails(templates_folder, dataset, server, sender, tls=False,
-                username=None, password=None, cc=None):
+                username=None, password=None, email_field='email', cc=None):
     if cc is None:
         cc = []
     else:
@@ -30,18 +30,15 @@ def send_emails(templates_folder, dataset, server, sender, tls=False,
         server.login(username, password)
 
     # Now, for each record in the dataset, loop and send emails !
-    for record in records:
-        text = body_template.render(record)
+    for record in records.dict:
+        to = record[email_field]
+        text = body_template.render(**record)
         message = MIMEText(text, 'plain', 'UTF-8')
-        message['Subject'] = subject_template.render(record)
-
-        message = MIMEText(text, 'plain', 'UTF-8')
+        message['Subject'] = subject_template.render(**record)
         message['From'] = sender
-        message['To'] = record['email']
+        message['To'] = to
         message['Cc'] = ", ".join(cc)
-
-        server.sendmail(sender, record['email'] + [cc, ],
-                        message.as_string())
+        server.sendmail(sender, cc + [to, ],  message.as_string())
     server.quit()
 
 
@@ -74,6 +71,11 @@ def main():
     parser.add_argument('-p', '--password', dest='password',
                         default=None, help='Password.')
 
+    parser.add_argument('-e', '--email-field', dest='email_field',
+                        help='Field to use as an email field.',
+                        default='email')
+
     args = parser.parse_args()
     send_emails(args.templates_folder, args.dataset, args.server, args.sender,
-                args.tls, args.username, args.password)
+                args.tls, args.username, args.password,
+                email_field=args.email_field)

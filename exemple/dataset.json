@@ -1,4 +1,4 @@
 '[
    {"reason": "the one", "email": "toto@yopmail.com", "name": "Mr Toto"},
-   {"reason": "right here, right now", "email": "alexis@yopmail.com", "name": "Alexis"}
+   {"reason": "right here", "email": "alexis@yopmail.com", "name": "Alexis"}
  ]'
