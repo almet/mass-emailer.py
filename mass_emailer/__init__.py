@@ -65,8 +65,8 @@ def main():
                         help='Email address you want to use as a sender.',
                         default='massmailer@yopmail.com')
 
-    parser.add_argument('-S', '--ssl', dest='ssl', action='store_true',
-                        default=False, help='Should connect using SSL.')
+    parser.add_argument('--tls', dest='tls', action='store_true',
+                        default=False, help='Should connect using TLS.')
 
     parser.add_argument('-u', '--username', dest='username',
                         default=None, help='Username.')
