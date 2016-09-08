@@ -15,7 +15,7 @@ def send_emails(templates_folder, dataset, server, sender, tls=False,
     else:
         cc = [cc, ]
 
-    records = Dataset().load(open(dataset).read())
+    records = Dataset().load(open(dataset).read(), format="tsv")
 
     simple_loader = FileSystemLoader(templates_folder)
     env = Environment(loader=simple_loader)
