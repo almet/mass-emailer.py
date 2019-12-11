@@ -47,7 +47,7 @@ def send_emails(templates_folder, dataset, server, sender, tls=False,
         if dry_run:
             print(sender, cc, to, text)
         else:
-            print("Send email to {0]}".format(to))
+            print("Send email to {0}".format(to))
             server.sendmail(sender, cc + [to, ],  message.as_string())
     if not dry_run:
         server.quit()
